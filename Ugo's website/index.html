@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ugochi Shalom Okpara — Software Engineer</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #1a0a10;
+            --surface: #24101a;
+            --card: #2e1520;
+            --accent: #ff6eb4;
+            --accent2: #ffb3d9;
+            --text: #fce8f0;
+            --muted: #b87a95;
+            --border: #4a2035;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 4rem;
+            background: rgba(26, 10, 16, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* HERO */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 4rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-bg-circle.c1 {
+            width: 600px;
+            height: 600px;
+            background: var(--accent);
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-bg-circle.c2 {
+            width: 400px;
+            height: 400px;
+            background: #ff9ed6;
+            bottom: -50px;
+            left: 150px;
+            animation: float 11s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-28px)
+            }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeUp 1s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .hero-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 560px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.25s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #1a0a10;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 110, 180, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 6rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            max-width: 60px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+        }
+
+        h2 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 0 4rem;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .about-text p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* PHOTO PLACEHOLDER */
+        .about-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .photo-frame {
+            width: 260px;
+            height: 320px;
+            border-radius: 120px 120px 80px 80px;
+            border: 2px solid var(--accent);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 40px rgba(255, 110, 180, 0.2);
+            background: var(--card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            /* shown once src is set */
+        }
+
+        .photo-placeholder {
+            text-align: center;
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            padding: 1rem;
+        }
+
+        .photo-placeholder span {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .stat-item {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.25rem;
+        }
+
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* EXPERIENCE */
+        .exp-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .exp-card:hover {
+            border-color: var(--accent);
+            transform: translateX(6px);
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: 16px 0 0 16px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .exp-card:hover::before {
+            opacity: 1;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .exp-role {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .exp-company {
+            color: var(--accent);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+        }
+
+        .exp-date {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--muted);
+            background: var(--surface);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .exp-bullets {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .exp-bullets li {
+            color: var(--muted);
+            font-size: 0.9rem;
+            padding: 0.3rem 0 0.3rem 1.25rem;
+            position: relative;
+        }
+
+        .exp-bullets li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.6rem;
+            top: 0.5rem;
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-desc {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--accent);
+            background: rgba(255, 110, 180, 0.08);
+            border: 1px solid rgba(255, 110, 180, 0.25);
+            padding: 0.25rem 0.65rem;
+            border-radius: 20px;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-group {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: border-color 0.3s;
+        }
+
+        .skill-group:hover {
+            border-color: var(--accent);
+        }
+
+        .skill-group-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-pill {
+            font-size: 0.82rem;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .skill-pill:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* EDUCATION */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .edu-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 1.75rem;
+            transition: border-color 0.3s;
+        }
+
+        .edu-card:hover {
+            border-color: var(--accent);
+        }
+
+        .edu-cert {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .edu-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-provider {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        /* CONTACT */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-sub {
+            color: var(--muted);
+            max-width: 480px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--muted);
+            text-decoration: none;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.78rem;
+            transition: all 0.25s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem 4rem;
+            border-top: 1px solid var(--border);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        /* ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.2rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            #hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .divider {
+                margin: 0 1.5rem;
+            }
+
+            .photo-frame {
+                width: 200px;
+                height: 240px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">USO</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-bg-circle c1"></div>
+        <div class="hero-bg-circle c2"></div>
+        <div class="hero-content">
+            <div class="hero-tag">Available for full-time roles · Dublin, Ireland</div>
+            <h1>Ugochi<br /><em>Shalom</em><br />Okpara</h1>
+            <p class="hero-sub">Software engineer passionate about building scalable web and data-driven applications. Former healthcare professional
+            who transitioned into tech with a passion for creating impactful digital solutions. .</p>
+            <div class="hero-ctas">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-label">About Me</div>
+        <div class="about-grid reveal">
+            <div class="about-text">
+                <h2>From bedside<br />to <em>build side.</em></h2>
+                <p>I spent <strong>4 years in healthcare</strong> — work that was deeply meaningful, demanding, and
+                    shaped how I think about solving real human problems. But I always felt a pull toward creation. I
+                    wanted to build things that could scale, things that could last.</p>
+                <p>So I taught myself to code. I dedicated myself fully, spending months going deep on
+                    JavaScript, Python, and software fundamentals before landing my first engineering role at
+                    <strong>CallCrewAI</strong>, a Dublin-based AI startup.</p>''
+                <p>My healthcare background isn't a footnote  it's a genuine asset. I understand end-users, I work well
+                    under pressure, and I care deeply about the impact of what I build. I'm now looking for a
+                    <strong>full-time software engineering role</strong> where I can keep growing and contribute to
+                    something meaningful.</p>
+                <br />
+                <a href="mailto:ugochiokpara31@gmail.com" class="btn btn-outline">Say Hello →</a>
+            </div>
+
+            <div class="about-right">
+                <!-- PHOTO: Replace "your-photo.jpg" with your actual image filename -->
+                <!-- Save your photo in the same folder as index.html, then update the src below -->
+                <div class="photo-frame">
+                    <img src="pic.jpg.png" alt="Ugochi Shalom Okpara" id="profile-photo" />
+                    <div class="photo-placeholder" id="photo-hint">
+                        <span>🌸</span>
+                        Add your photo here!<br />Replace "your-photo.jpg"<br />in the code
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-num">4</div>
+                        <div class="stat-label">Years in Healthcare</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">6+</div>
+                        <div class="stat-label">Languages & Frameworks</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">3</div>
+                        <div class="stat-label">Certifications Earned</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">∞</div>
+                        <div class="stat-label">Drive to Keep Building</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="section-label">Experience</div>
+        <h2>Where I've <em>worked.</em></h2>
+
+        <div class="exp-card reveal">
+            <div class="exp-header">
+                <div>
+                    <div class="exp-role">Software Engineer Intern</div>
+                    <div class="exp-company">CallCrewAI · Dublin, Ireland</div>
+                </div>
+                <div class="exp-date">Jan 2026 – Present</div>
+            </div>
+            <ul class="exp-bullets">
+                <li>Collaborated with founders and cross-functional teams on AI-powered software solutions focused on
+                    customer interaction and operational efficiency.</li>
+                <li>Developed and tested features using JavaScript, Python, Go, and SQL — with a focus on scalability
+                    and clean code.</li>
+                <li>Integrated internal and third-party APIs to support AI-driven workflows, real-time data processing,
+                    and automation.</li>
+                <li>Debugged production issues, refactored legacy code, and participated in code reviews and technical
+                    documentation.</li>
+                <li>Rapidly adopted new tools and frameworks in a fast-moving startup environment.</li>
+            </ul>
+        </div>
+
+        <div class="exp-card reveal">
+            <div class="exp-header">
+                <div>
+                    <div class="exp-role">Healthcare Professional</div>
+                    <div class="exp-company"> CPL Healthcare · Ireland</div>
+                </div>
+                <div class="exp-date">2020 – 2025</div>
+            </div>
+            <ul class="exp-bullets">
+                <li>Worked in high-pressure clinical environments, developing sharp problem-solving skills and deep
+                    empathy for my clients.</li>
+                <li>Managed complex, time-sensitive situations across 4 years — a mindset that now directly shapes how I
+                    approach engineering problems.</li>
+                <li>Transitioned into tech through self-directed study, bootcamps, and hands-on project building.</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-label">Projects</div>
+        <h2>Things I've <em>built.</em></h2>
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <div class="project-icon">🎬</div>
+                <div class="project-name">Movie Recommendation System</div>
+                <p class="project-desc">A recommendation engine inspired by platforms like Netflix. Uses collaborative
+                    filtering and content-based filtering with full data preprocessing, model evaluation, and predictive
+                    analysis on real-world datasets.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span><span class="tag">Machine Learning</span><span
+                        class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Collaborative
+                        Filtering</span>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <div class="project-icon">🌦️</div>
+                <div class="project-name">Weather Application</div>
+                <p class="project-desc">An interactive weather app with live data via the OpenWeatherMap API, displaying
+                    temperature, humidity, wind speed, and conditions. Fully responsive across mobile and desktop.</p>
+                <div class="project-tags">
+                    <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span
+                        class="tag">REST API</span><span class="tag">Responsive Design</span>
+                </div>
+            </div>
+            <div class="project-card reveal" style="grid-column:1/-1;opacity:0.5;border-style:dashed;">
+                <div class="project-icon">🚧</div>
+                <div class="project-name">More Coming Soon</div>
+                <p class="project-desc">Currently building. Check my GitHub to see what's in progress.</p>
+                <div class="project-tags"><span class="tag">In Progress</span></div>
+            </div>
+        </div>
+        <br />
+        <a href="https://github.com/Shalom-Ok" target="_blank" class="btn btn-outline" style="margin-top:1rem;">View GitHub
+            →</a>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="section-label">Skills</div>
+        <h2>What I <em>know.</em></h2>
+        <div class="skills-grid reveal">
+            <div class="skill-group">
+                <div class="skill-group-title">Languages</div>
+                <div class="skill-list">
+                    <span class="skill-pill">JavaScript</span><span class="skill-pill">TypeScript</span><span
+                        class="skill-pill">Python</span><span class="skill-pill">Go (Golang)</span><span
+                        class="skill-pill">SQL</span><span class="skill-pill">HTML</span><span
+                        class="skill-pill">CSS</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-group-title">Frontend</div>
+                <div class="skill-list">
+                    <span class="skill-pill">React</span><span class="skill-pill">Responsive Design</span><span
+                        class="skill-pill">DOM Manipulation</span><span class="skill-pill">UI/UX Principles</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-group-title">Backend & APIs</div>
+                <div class="skill-list">
+                    <span class="skill-pill">REST APIs</span><span class="skill-pill">API Integration</span><span
+                        class="skill-pill">Backend Logic</span><span class="skill-pill">Data Processing</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-group-title">Data & Analytics</div>
+                <div class="skill-list">
+                    <span class="skill-pill">Pandas</span><span class="skill-pill">NumPy</span><span
+                        class="skill-pill">Tableau</span><span class="skill-pill">Data Cleaning</span><span
+                        class="skill-pill">Exploratory Analysis</span><span class="skill-pill">Machine Learning</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <div class="skill-group-title">Tools & Platforms</div>
+                <div class="skill-list">
+                    <span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">VS
+                        Code</span><span class="skill-pill">Jupyter Notebook</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- EDUCATION -->
+    <section id="education">
+        <div class="section-label">Education</div>
+        <h2>How I <em>learned.</em></h2>
+        <div class="edu-grid reveal">
+            <div class="edu-card">
+                <div class="edu-cert">Bootcamp · 2025–2026</div>
+                <div class="edu-name">Software Development Bootcamp</div>
+                <div class="edu-provider">Future Tech Academy</div>
+            </div>
+            <div class="edu-card">
+                <div class="edu-cert">Certificate · 2025</div>
+                <div class="edu-name">Data Analyst Certificate</div>
+                <div class="edu-provider">Udemy</div>
+            </div>
+            <div class="edu-card">
+                <div class="edu-cert">Certificate · 2025</div>
+                <div class="edu-name">Introduction to Coding & Software Development</div>
+                <div class="edu-provider">SheCodes</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-label" style="justify-content:center;">Contact</div>
+        <h2>Let's <em>connect.</em></h2>
+        <p class="contact-sub">I'm actively looking for full-time software engineering roles. If you think I'd be a good
+            fit — or just want to chat — reach out.</p>
+        <div class="contact-links">
+            <a href="mailto:ugochiokpara31@gmail.com" class="contact-link"><span>✉</span> ugochiokpara31@gmail.com</a>
+            <a href="https://www.linkedin.com/in/ugochi-shalom-okpara-574a1230b/" target="_blank" class="contact-link"><span>in</span> LinkedIn</a>
+            <a href="https://github.com/Shalom-Ok" target="_blank" class="contact-link"><span>⌥</span> GitHub</a>
+            <a href="tel:+353830125368" class="contact-link"><span>☎</span> +353 83 012 5368</a>
+        </div>
+        <a href="mailto:ugochiokpara31@gmail.com" class="btn btn-primary">Hire Me →</a>
+    </section>
+
+    <footer>
+        <p>© 2026 Ugochi Shalom Okpara · Built with HTML, CSS & JavaScript · Dublin, Ireland</p>
+    </footer>
+
+    <script>
+        // Show/hide photo placeholder
+        const img = document.getElementById('profile-photo');
+        const hint = document.getElementById('photo-hint');
+        img.onload = () => { img.style.display = 'block'; hint.style.display = 'none'; };
+        img.onerror = () => { img.style.display = 'none'; hint.style.display = 'flex'; };
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+
+        // Nav highlight
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id'); });
+            navLinks.forEach(l => { l.style.color = l.getAttribute('href') === `#${current}` ? 'var(--accent)' : ''; });
+        });
+    </script>
+</body>
+
+</html>
