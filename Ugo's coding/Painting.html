@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>painting</title>
+   
+    <style>
+        body{background:linear-gradient(to right, rgb(82, 191, 227), rgb(33, 244, 159) );}
+img {max-width: 700px;
+max-width: 100%;}
+
+.container{ 
+    max-width: 700px;
+    background-color: aquamarine;
+    padding: 20px;
+    border-radius: 20px;
+    align-items: center;
+    margin: 0 auto;
+
+
+}
+        button{display: block;
+        margin: 0 auto;
+    border: 1px rgb(0, 153, 255) ;
+background-color: lightcyan;
+font-size: 20px;
+border-radius: 6px;
+padding: 10px;}
+
+button:hover{
+    
+    background:linear-gradient(to right, rgb(82, 191, 227), rgb(33, 244, 159));
+    cursor: pointer;
+
+    
+}
+    .dark-mode {
+        background-color: black;
+        color: white;
+    }
+    h1{text-align: center;}
+
+    .SpongeBob:hover {filter:contrast(40%);
+        cursor: pointer;
+    transition: opacity 150ms ease-in-out;
+transform: scale(1.1);}
+
+.column {display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-gap: 20px;}
+
+.column img {width: 100%;}
+.column img:hover {transform: scale(2);
+transition: 200ms ease-in-out;
+cursor:pointer}
+
+.dark {background: black;
+color: white;}
+
+.dark .container {background: rgb(137, 132, 132);}
+
+</style>
+
+         </head>
+        <body> 
+            <button class="dark-mode">Dark Mode</button>
+            
+            <H1>My Lost Passion For Painting</H1>
+<div class="container">
+            <img class = "SpongeBob"src="c:\Users\User\Downloads\IMG_2056.jpeg" alt="" 
+            />
+
+           <div class="column">
+
+            <img src="c:\Users\User\Downloads\IMG_2058.jpeg" alt=""/>
+
+            <img src="c:\Users\User\Downloads\IMG_2060.jpeg" alt=""/>
+
+            <img src="c:\Users\User\Downloads\IMG_2055.jpeg" alt="">
+
+            <img src="c:\Users\User\Downloads\IMG_2057.jpeg" alt=""/>
+</div>
+
+            <p>
+                As a child my creativity flowed freely. But as I grew, the pressures of conformity began to dull that
+                vibrant spark. The need to fit in, to meet expectations, gradually silenced the inner voice that once urged me to
+                create. The world seemed to value practicality over passion. Then, one day, a yearning for that lost
+                childlike spirit. i asked myself what happend to me, what happedn to my uniqeness. Now i just look like everyone else
+                 I picked up a paintbrush and began to explore the canvas. My inner child made an apperance. I am no Picasso but i think
+                 these's paqintings are perfect.
+            </p>
+        
+           <a href="https://github.com/Shalom-Ok"> <button>
+                See Other Projects Here
+            </button> </a>
+<footer>
+    Coded By Ugochi Okpara
+</footer></div>
+<script>
+    function changeTheme(){
+        let body = document.querySelector("body");
+        if(body.classList.contains ("dark")){
+            body.classList.remove ("dark");
+        } else {
+        body.classList.add("dark");}
+    }
+let DarkMode = document.querySelector(".dark-mode");
+DarkMode.addEventListener("click", changeTheme);
+
+</script>
+        </body>
+        </html>

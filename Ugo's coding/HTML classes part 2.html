@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f075c1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .weather-app {
+            background: white;
+            padding: 20px;
+            margin: auto;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            padding: 10px;
+            width: 70%;
+            border-radius: 5px;
+            border: 1px solid #8d0672;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: pink;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .weather-info {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="weather-app">
+        <h2>Weather App</h2>
+
+        <!-- ✅ THIS is the search form -->
+        <form id="search-form">
+            <input type="search" id="search-input" placeholder="Enter a city…" required />
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Where results appear -->
+        <div class="weather-info">
+            <h3 id="city-name"></h3>
+            <p id="temperature"></p>
+            <p id="description"></p>
+        </div>
+    </div>
+
+    <!-- Axios (needed for API calls) -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        function search(event) {
+            event.preventDefault(); // stops page refresh
+
+            let city = document.querySelector("#search-input").value;
+            let apiKey = "b63a6a2f48ao0tfdf23944c1c3f5884e"; // your key
+            let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+            axios.get(apiUrl).then(showWeather);
+        }
+
+        function showWeather(response) {
+            document.querySelector("#city-name").innerHTML = response.data.city;
+            document.querySelector("#temperature").innerHTML =
+                "Temperature: " + Math.round(response.data.temperature.current) + "°C";
+            document.querySelector("#description").innerHTML =
+                "Conditions: " + response.data.condition.description;
+        }
+
+        // Connect the form to the function
+        document.querySelector("#search-form").addEventListener("submit", search);
+
+        s
+    </script>
+
+</body>
+
+
+</html>

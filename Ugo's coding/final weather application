@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>My weather application</title>
+    <style>
+       <style>
+body {
+font-family: Arial, sans-serif;
+background: #f4f4f4;
+padding: 20px;
+text-align: center;
+}
+
+.weather-app {
+background: white;
+padding: 20px;
+margin: auto;
+max-width: 400px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+input {
+padding: 10px;
+width: 70%;
+border-radius: 5px;
+border: 1px solid #ccc;
+}
+
+button {
+padding: 10px 15px;
+border: none;
+background: black;
+color: white;
+border-radius: 5px;
+cursor: pointer;
+}
+
+button:hover {
+opacity: 0.8;
+}
+
+.weather-info {
+margin-top: 20px;
+font-size: 1.2rem;
+}
+    </style>
+</head>
+
+<body>
+    <div class="weather-app">
+        <header>
+            <form id="search-form">
+                <input class="search-input" type="search" placeholder="Enter a city.." required class="search-input"
+                    id="search-input" />
+                <input type="submit" value="Search" class="search-button" />
+            </form>
+        </header>
+        <main>
+            <div class="current-weather">
+                <div>
+                    <h1 id="current-city">Paris</h1>
+                    <p>
+                        <span id="current-date"></span>, moderate rain <br />
+                        Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
+                    </p>
+                </div>
+                <div class="current-temp">
+                    <span class="current-temp-icon">☀</span>
+                    <span class="current-temp-value">14</span>
+                    <span class="current-temp-unit">°C</span>
+                </div>
+            </div>
+        </main>
+
+        <Footer>
+            this project was coded by <a href="https://www.linkedin.com/in/ugochi-shalom-okpara-574a1230b/"
+                target="_blank">Ugochi Okpara. </a>find more of my projects <a href="https://github.com/Shalom-Ok"
+                target="_blank">here on Github</a>
+        </footer>
+    </div>
+</body>
+<script>
+    function search(event) {
+        event.preventDefault();
+        let searchInputElement = document.querySelector("#search-input");
+        let cityElement = document.querySelector("#current-city");
+        cityElement.innerHTML = searchInputElement.value;
+    }
+    let searchForm = document.querySelector("#search-form");
+    searchForm.addEventListener("submit", search)
+
+    let currentDate = document.querySelector("#current-date");
+    let currentTime = new Date();
+    let minutes = currentTime.getMinutes();
+    let hours = currentTime.getHours();
+    let day = currentTime.getDay();
+    if (minutes < 10) { minutes = 0 + "" + minutes; }
+    if (hours < 10) { hours = 0 + "" + hours; }
+    let days = ["sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ];
+    let formattedDay = days[day];
+    currentDate.innerHTML = formattedDay + " " + hours + " : " + minutes;
+</script>
+
+</html>
